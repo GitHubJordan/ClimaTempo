@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ClimaTempo - Previsão do Tempo</title>
+    <link rel="stylesheet" href="./css/styles.css">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1>🌤️ ClimaTempo</h1>
+            <p>Previsão do tempo em tempo real para qualquer lugar do mundo</p>
+        </header>
+
+        <div class="api-info">
+            <strong>📡 API Status:</strong> Usando OpenWeatherMap API - <span id="apiStatus">Conectado</span>
+        </div>
+
+        <section class="search-section">
+            <div class="search-container">
+                <input type="text" class="search-input" id="cityInput" placeholder="Digite o nome da cidade..." />
+                <button class="btn btn-primary" onclick="searchWeather()">🔍 Buscar</button>
+                <button class="btn btn-secondary" onclick="getLocationWeather()">📍 Minha Localização</button>
+            </div>
+        </section>
+
+        <div id="loadingDiv" class="loading hidden">
+            <div class="spinner"></div>
+            <p>Carregando dados meteorológicos...</p>
+        </div>
+
+        <div id="errorDiv" class="error hidden">
+            <p id="errorMessage"></p>
+        </div>
+
+        <div id="weatherCard" class="weather-card hidden">
+            <div class="weather-main">
+                <div class="weather-info">
+                    <h2 id="cityName"></h2>
+                    <p class="location" id="countryName"></p>
+                    <p class="description" id="weatherDescription"></p>
+                </div>
+                <div class="temperature">
+                    <div class="temp-main" id="temperature"></div>
+                    <div class="feels-like" id="feelsLike"></div>
+                </div>
+            </div>
+
+            <div class="weather-details">
+                <div class="detail-item">
+                    <div class="detail-icon">💨</div>
+                    <div class="detail-label">Vento</div>
+                    <div class="detail-value" id="windSpeed"></div>
+                </div>
+                <div class="detail-item">
+                    <div class="detail-icon">💧</div>
+                    <div class="detail-label">Umidade</div>
+                    <div class="detail-value" id="humidity"></div>
+                </div>
+                <div class="detail-item">
+                    <div class="detail-icon">👁️</div>
+                    <div class="detail-label">Visibilidade</div>
+                    <div class="detail-value" id="visibility"></div>
+                </div>
+                <div class="detail-item">
+                    <div class="detail-icon">🌡️</div>
+                    <div class="detail-label">Pressão</div>
+                    <div class="detail-value" id="pressure"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="./js/app.js"></script>
+</body>
+</html>
