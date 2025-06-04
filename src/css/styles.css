@@ -64,6 +64,10 @@
             font-size: 3.5rem;
             font-weight: 700;
             margin-bottom: 1rem;
+            position: relative;
+        }
+
+        .header h1 .title-text {
             background: linear-gradient(45deg, #fff, #f0f0f0, #fff);
             background-size: 200% 200%;
             -webkit-background-clip: text;
@@ -436,6 +440,8 @@
             font-size: 2rem;
             margin-bottom: 0.8rem;
             animation: bounce 2s ease-in-out infinite;
+            filter: none;
+            color: initial;
         }
 
         @keyframes bounce {
@@ -530,3 +536,6 @@
         * {
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
+        .weather-card {
+            transition: transform 0.3s ease-in-out;
+        }   
