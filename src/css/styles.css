@@ -5,14 +5,79 @@
         }
 
         :root {
-            --primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            --secondary-gradient: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
-            --card-gradient: linear-gradient(145deg, rgba(255,255,255,0.1), rgba(255,255,255,0.05));
-            --glass-backdrop: rgba(255, 255, 255, 0.1);
-            --text-primary: #ffffff;
-            --text-secondary: rgba(255, 255, 255, 0.8);
-            --shadow-primary: 0 20px 40px rgba(0,0,0,0.2);
-            --shadow-secondary: 0 10px 25px rgba(0,0,0,0.15);
+            /* Cores para modo claro */
+            --light-primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --light-secondary-gradient: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            --light-card-gradient: linear-gradient(145deg, rgba(255,255,255,0.1), rgba(255,255,255,0.05));
+            --light-glass-backdrop: rgba(255, 255, 255, 0.1);
+            --light-text-primary: #ffffff;
+            --light-text-secondary: rgba(255, 255, 255, 0.8);
+            --light-shadow-primary: 0 20px 40px rgba(0,0,0,0.2);
+            --light-shadow-secondary: 0 10px 25px rgba(0,0,0,0.15);
+            
+            /* Cores para modo escuro */
+            --dark-primary-gradient: linear-gradient(135deg, #1a2a6c 0%, #2a0845 100%);
+            --dark-secondary-gradient: linear-gradient(135deg, #8E2DE2 0%, #4A00E0 100%);
+            --dark-card-gradient: linear-gradient(145deg, rgba(0,0,0,0.2), rgba(0,0,0,0.15));
+            --dark-glass-backdrop: rgba(0, 0, 0, 0.15);
+            --dark-text-primary: #f0f0f0;
+            --dark-text-secondary: rgba(240, 240, 240, 0.7);
+            --dark-shadow-primary: 0 20px 40px rgba(0,0,0,0.4);
+            --dark-shadow-secondary: 0 10px 25px rgba(0,0,0,0.3);
+            
+            /* Variáveis ativas (inicialmente modo claro) */
+            --primary-gradient: var(--light-primary-gradient);
+            --secondary-gradient: var(--light-secondary-gradient);
+            --card-gradient: var(--light-card-gradient);
+            --glass-backdrop: var(--light-glass-backdrop);
+            --text-primary: var(--light-text-primary);
+            --text-secondary: var(--light-text-secondary);
+            --shadow-primary: var(--light-shadow-primary);
+            --shadow-secondary: var(--light-shadow-secondary);
+        }
+
+        body.dark-mode {
+            --primary-gradient: var(--dark-primary-gradient);
+            --secondary-gradient: var(--dark-secondary-gradient);
+            --card-gradient: var(--dark-card-gradient);
+            --glass-backdrop: var(--dark-glass-backdrop);
+            --text-primary: var(--dark-text-primary);
+            --text-secondary: var(--dark-text-secondary);
+            --shadow-primary: var(--dark-shadow-primary);
+            --shadow-secondary: var(--dark-shadow-secondary);
+        }
+
+        /* Estilo para o botão de toggle */
+        .theme-toggle {
+            position: absolute;
+            top: 1.5rem;
+            right: 1.5rem;
+            background: var(--glass-backdrop);
+            border: 1px solid rgba(255,255,255,0.2);
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            cursor: pointer;
+            backdrop-filter: blur(10px);
+            box-shadow: var(--shadow-secondary);
+            transition: all 0.3s ease;
+            z-index: 10;
+        }
+
+        .theme-toggle:hover {
+            transform: scale(1.1) rotate(30deg);
+            background: rgba(255,255,255,0.2);
+            box-shadow: 0 0 20px rgba(255,255,255,0.2);
+        }
+
+        /* Ajuste no cabeçalho para acomodar o botão */
+        .header {
+            position: relative;
+            padding-bottom: 2rem;
         }
 
         body {
@@ -38,6 +103,15 @@
                 radial-gradient(circle at 40% 40%, rgba(120, 219, 255, 0.2) 0%, transparent 50%);
             animation: backgroundPulse 20s ease-in-out infinite alternate;
             z-index: -1;
+            opacity: 0.7;
+        }
+
+        body.dark-mode::before {
+            background: 
+                radial-gradient(circle at 20% 80%, rgba(30, 30, 70, 0.5) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(70, 20, 80, 0.5) 0%, transparent 50%),
+                radial-gradient(circle at 40% 40%, rgba(20, 50, 100, 0.4) 0%, transparent 50%);
+            opacity: 0.9;
         }
 
         @keyframes backgroundPulse {
